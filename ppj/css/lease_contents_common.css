@@ -1,0 +1,95 @@
+﻿@charset "UTF-8";
+
+div#contents {
+	margin-top: 50px;
+}
+
+
+
+/* 大写真 */
+
+div#photo {
+	width: 550px;
+	height: 450px;
+	float: left;
+}
+
+div#photo h2 {
+	float: left;
+}
+
+div#photo h2 + p {
+	margin-top: 53px;
+	float: right;
+}
+
+div#photo h2 + p + p {
+	width: 526px;
+	height: 348px;
+	margin-top: 5px;
+	padding: 5px;
+	float: left;
+}
+
+
+
+/* 間取り図 */
+
+div#plan {
+	margin-top: 92px;
+	float: right;
+}
+
+
+
+/* サムネイル */
+
+div#s_photo {
+	width: 960px;
+	clear: both;
+}
+
+div#s_photo ul {
+	width: 984px;
+	overflow: hidden;
+	list-style: none;
+}
+
+div#s_photo li {
+	width: 140px;
+	margin-right: 24px;
+	float: left;
+}
+
+div#s_photo p {
+	margin-top: 25px;
+	font-size: 0.8em;
+	font-weight: bold;
+	line-height: 1.5em;
+	white-space: nowrap;
+}
+
+
+
+/* 物件詳細 */
+
+div#detail {
+	width: 960px;
+	height: 460px;
+	margin-top: 33px;
+}
+
+div#detail p {
+	margin: 25px 0px 36px 32px;
+	line-height: 1.1em;
+}
+
+
+
+/* Google Maps API */
+
+div#map_canvas {
+	width: 461px;
+	height: 313px;
+	float: left;
+}

@@ -1,0 +1,26 @@
+﻿@charset "UTF-8";
+
+/* My2レジデンス詳細テキスト */
+
+div#text {
+	height: 313px;
+}
+
+div#text dl {
+	width: 380px;
+	height: 313px;
+	margin-left: 100px;
+	font-size: 0.75em;
+	float: left;
+}
+
+div#text dt {
+	clear: both;
+	float: left;
+}
+
+div#text dd {
+	margin-bottom: 0.8em;
+	margin-left: 7.5em;
+}
+

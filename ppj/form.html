@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>PPJ空室情報テスト送信</title>
+	</head>
+
+	<body>
+		<h1>空室情報更新管理画面</h1>
+		<form action="./lease_yutaka.php" method="post">
+			<h2>ロイヤルユタカ</h2>
+			<p><input name="vacant" type="radio" value="0" checked>空室あり</p>
+			<p><input name="vacant" type="radio" value="1">空室なし</p>
+			<p><input type="submit">
+		</form>
+
+		<form action="./lease_my2.php" method="post">
+			<h2>MY2レジデンス</h2>
+			<p><input name="vacant" type="radio" value="0" checked>空室あり</p>
+			<p><input name="vacant" type="radio" value="1">空室なし</p>
+			<p><input type="submit">
+		</form>
+
+		<form action="./lease_hanakawa.php" method="post">
+			<h2>モータープール花川</h2>
+			<p><input name="vacant" type="radio" value="0" checked>空車あり</p>
+			<p><input name="vacant" type="radio" value="1">空車なし</p>
+			<p><input type="submit">
+		</form>
+	</body>
+
+</html>

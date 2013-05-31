@@ -1,0 +1,151 @@
+・*/
+* TouchSwipeSlider - jQuery Plugin
+* http://kara-full.jp
+* 
+* Copyright (c) KARA-FULL
+* ver.1.0.0
+*/
+
+html{
+-webkit-text-size-adjust: none;
+}
+body{
+font-size: 62.5%;
+font-family: PT Sans Narrow, sans-serif;
+}
+#wrapper{
+width: 940px;/* 320から変更 */
+margin:100px auto;/* 0から変更 */
+}
+
+header{
+margin: 10px 0 20px 0;
+}
+
+h1{
+font-size: 1.8em;
+letter-spacing: .05em;
+}
+footer{
+margin-top: 50px;
+font-size: 1.0em;
+letter-spacing: 0.1em;
+}
+
+a{
+color: #aaa;
+}
+a:hover{
+color: #000;
+}
+
+
+
+
+/* Next and Prev Button
+------------------------------------------------------------------------*/
+#slideBox{
+position:relative;
+width:940px;/*320から変更*/
+height: 425px;/*220から変更*/
+}
+#slider{
+position:relative;
+width: 940px;/*320から変更*/
+height: 425px;/*220から変更*/
+overflow:hidden;
+}
+
+#sldImgs{
+position: absolute;
+top: 0;
+left: 0;
+-webkit-transition-property: -webkit-transform;
+-webkit-transition-duration: 0.5s;
+-webkit-transition-timing-function: ease-out;
+padding:0px;
+margin:0px;
+width: 2560px;/*1600から変更*/
+height: 200px;
+-webkit-transform: translate3d(0px,0px,0px); 
+}
+
+#sldImgs li{
+width: 940px;/*新しく追加*/
+float:left;
+display:inline;
+}
+
+#sldImgs img{
+padding:0px;
+margin:0px;
+max-width:940px;/*画像表示サイズ320から変更*/
+width: 100%;
+-webkit-transform: translate3d(0px,0px,0px); 
+}
+
+
+/* Next and Prev Button
+------------------------------------------------------------------------*/
+#sldNav{
+position: absolute;
+bottom: 0;
+left: 5px;
+width: 40px;
+}
+#sldNav ul{
+width: 60px;
+margin: 0 auto;
+}
+#sldNav li{
+float: left;
+display: inline;
+}
+#sldNav li a{
+display: block;
+width: 15px;
+height: 15px;
+background-color: #eee;
+border-radius: 2px;
+margin: 0 5px 0 0;
+text-align: center;
+color: #000;
+font-size: 1.0em;
+line-height: 1.5;
+}
+#sldNav li a:hover{
+background-color: #aaa;
+color: #fff;
+}
+
+
+/* Pagination
+------------------------------------------------------------------------*/
+#pagination{
+position: absolute;
+bottom: 0;
+right: 5px;
+display: block;
+overflow: hidden;
+}
+#pagination a{
+float: left;
+display: block;
+width: 15px;
+height: 15px;
+overflow: hidden;
+border-radius: 2px;
+margin: 0 0 0 5px;
+background-color: #eee;
+text-align: center;
+color: #000;
+line-height: 1.5;
+}
+#pagination a:hover{
+background-color: #aaa;
+color: #fff;
+}
+#pagination a.current{
+background-color: #a0d8ef;
+color: #fff;
+}

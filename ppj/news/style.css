@@ -1,0 +1,149 @@
+@charset "utf-8";
+/*▼共通スタイル▼*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, textarea, p {
+	/*Reset*/
+	margin: 0;
+	padding: 0;
+}
+ul#news_list {
+	margin:5px 0 0 20px;
+	padding:0;
+}
+ul#news_list li {
+	color:#666;
+	font-size:13px;
+	margin:0;
+	padding:0;
+	padding-bottom:2px;
+	margin-bottom:3px;
+	border-bottom:1px dotted #ccc;
+	line-height:120%;
+}
+a {
+	color:#36F;
+	text-decoration:none;
+}
+a:hover {
+	color:#039;
+	text-decoration:underline;
+}
+/*▲共通スタイル▲*/
+
+/*▼ポップアップウインドウのスタイル▼*/
+body#news_popup {
+	-webkit-text-size-adjust: none;
+	margin:10px;
+	padding:0;
+}
+body#news_popup h2 {
+	font-size:16px;
+	margin:0 0 5px;
+	color:#444;
+	border-bottom:1px dotted #999;
+	padding:5px 2px 1px;
+}
+p#cbox {
+	padding:10px;
+	margin:0px;
+	color:#666;
+	font-size:15px;
+	line-height:140%;
+}
+p.up_ymd {
+	font-size:13px;
+	margin:0px;
+	color:#666;
+	text-align:right;
+}
+.close_btn {
+	font-size:15px;
+	text-align:right;
+	padding-right:15px;
+}
+.close_btn a {
+	padding:2px 10px;
+	border:1px solid #aaa;
+	text-decoration:none;
+	color:#666;
+	border-radius:5px;
+}
+.close_btn a:hover {
+	background:#eee;
+}
+/*▲ポップアップウインドウのスタイル▲*/
+
+/*▼index.phpスタイル▼*/
+
+/*▲index.phpスタイル▲*/
+
+/*▼admin.phpスタイル▼*/
+
+body#news_admin p {
+	margin:0 0 5px;
+	line-height:130%;
+	font-size:13px;
+}
+body#news_admin #wrapper {
+	width:820px;
+	border: 1px solid #ccc;
+	border-top:0;
+	border-bottom:0;
+	box-shadow: 0 0px 7px #aaa;
+	margin:0 auto;
+	color:#666;
+	padding:5px 20px;
+}
+body#news_admin h1 {
+	font-size:18px;
+	color:#333;
+	margin-bottom:5px;
+	padding-left:5px;
+	border-left:5px solid #333;
+}
+body#news_admin h2 {
+	font-size:14px;
+	color:#fff;
+	margin-bottom:10px;
+	padding-left:5px;
+	background:#333;
+	padding:5px 8px 3px;
+	border-radius:3px;
+}
+body#news_admin #news_wrap {
+	width:820px;
+	height:150px;
+	overflow:auto;
+}
+.submit_btn {
+	width:240px;
+	height:30px;
+}
+form p {
+	border-bottom:1px dotted #ccc;
+	padding:10px 0;
+	margin-bottom:10px;
+}
+.fc_bbb, .fc_bbb a:link {
+	color:#bbb!important
+}
+.fc_red {
+	color:#F00!important
+}
+.message_com {
+	min-height:18px
+}
+.logout_btn {
+	text-align:right;
+}
+.logout_btn a {
+	padding:2px 10px;
+	border:1px solid #aaa;
+	text-decoration:none;
+	color:#666;
+	font-size:13px;
+	border-radius:4px;
+}
+.logout_btn a:hover {
+	background:#eee;
+}
+/*▲admin.phpスタイル▲*/

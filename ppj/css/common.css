@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+/* 全体ラップのCSSです */
+
+div#wrap {
+	width: 960px;
+	margin: auto;
+	font-family: "さわらびゴシック", sans-serif;
+}
+
+div#wrap img {
+	border: none;
+}
+
+/* ヘッダーのCSSです */
+
+div#header {
+	width: 960px;
+	height: 120px;
+	margin: auto;
+}
+
+div#header h1 {
+	float: right;
+}
+
+div#hd_menu {
+	clear: both;
+}
+
+div#hd_menu p {
+	float: left;
+}
+
+div#hd_menu ul {
+	list-style-type: none;
+	float: right;
+}
+
+div#hd_menu ul li {
+	margin: 46px 15px 0px;
+	background: url('../img/hd_menu_lease_hv.png') 0 0 no-repeat;
+	float: left;
+}
+
+div#hd_menu ul li a {
+	width: 88px;
+	height: 35px;
+	display: block;
+	text-indent: -9999px;
+	background: url('../img/hd_menu_lease.png') 0 0 no-repeat;
+}
+
+div#hd_menu ul li a:hover {
+	background: none;
+}
+
+div#hd_menu ul li + li + li {
+	background: url('../img/hd_menu_overview_hv.png') 0 0 no-repeat;
+}
+
+div#hd_menu ul li + li + li a {
+	width: 88px;
+	height: 37px;
+	display: block;
+	text-indent: -9999px;
+	background: url('../img/hd_menu_overview.png') 0 0 no-repeat;
+}
+
+div#hd_menu ul li + li + li a:hover {
+	background: none;
+}
+
+div#hd_menu ul li + li + li + li + li {
+		background: url('../img/hd_menu_contact_hv.png') 0 0 no-repeat;
+}
+
+div#hd_menu ul li + li + li + li + li a {
+	width: 87px;
+	height: 35px;
+	display: block;
+	text-indent: -9999px;
+	background: url('../img/hd_menu_contact.png') 0 0 no-repeat;
+}
+
+div#hd_menu ul li + li + li + li + li a:hover {
+	background: none;
+}
+
+
+
+/* フッターのCSSです */
+
+div#footer {
+	width: 960px;
+	height: 120px;
+	margin: auto;
+}
+
+div#footer ul {
+	list-style-type: none;
+}
+
+div#footer ul li {
+	display: table;
+	float: left;
+}
+
+div#footer ul li p {
+	width: 144px;
+	height: 120px;
+	display: table-cell;
+	layout-grid-line: 120px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div#footer ul + p {
+	width: 189px;
+	height: 10px;
+	position: relative;
+	left: 540px;
+	bottom: 30px;
+}
+
+
+div#footer ul li + li + li + li + li + li p {
+	background: url('../img/ft_contact_hv.png') 0 17px no-repeat;
+}
+
+div#footer ul li + li + li + li + li + li p a {
+	width: 202px;
+	height: 86px;
+	display: block;
+	text-indent: -9999px;
+	background: url('../img/ft_contact.png') 0 0 no-repeat;
+}
+
+div#footer ul li + li + li + li + li + li p a:hover {
+	background: none;
+}

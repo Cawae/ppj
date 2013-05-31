@@ -1,0 +1,43 @@
+﻿@charset "UTF-8";
+
+/* プライバシーポリシーのCSSです */
+
+div#main {
+	margin-top:72px;
+}
+
+div#main p{
+	margin-left:192px;
+}
+
+
+h2 { 
+	width:384px;
+	height:74px;
+	margin-top:72px;
+	margin-left:120px;
+	clear:both;
+}
+
+div#main dl {
+	margin-left;192px;
+	margin-top:72px;
+}
+
+div#main dt { 
+	margin-left:192px;
+}
+
+div#main dd { 
+	margin-left:216px;
+	margin-top:8px;
+	margin-bottom:30px;
+}
+
+div#contact {
+	margin-left:50px;
+	}
+
+p#contact_1 {
+	margin-top:27px;
+}

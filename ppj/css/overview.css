@@ -1,0 +1,41 @@
+﻿@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/*会社概要用css*/
+
+
+div#overview {
+	width: 960px;
+	height: 700px;
+	margin: 50px auto;
+}
+
+div#overview h1 {
+	margin-left: 85px;
+}
+
+
+div#overview dl {
+	width: 700px;
+	height: 450px;
+	margin-top: 50px;
+	margin-left: 165px;
+	font-size: x-large;
+	float: left;
+}
+
+div#overview dt {
+	color: #62331D;
+	clear: both;
+	float: left;
+}
+
+div#overview dd {
+	margin-bottom: 1.5em;
+	margin-left: 200px;
+}
