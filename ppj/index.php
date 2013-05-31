@@ -5,10 +5,13 @@
 		<title>共通CSS</title>
 		<link rel="stylesheet" href="./css/common.css" type="text/css">
 		<link rel="stylesheet" href="./css/jquery.bxslider.css" type="text/css">
+		<link rel="stylesheet" href="./css/index.css" type="text/css">
+		<link rel="stylesheet" href="./css/li-scroller.css" type="text/css">
 		<title></title>
 		<script type="text/javascript" src="./js/jquery.js" ></script>
 		<script type="text/javascript" src="./js/jquery.easing.1.3.js" ></script>
 		<script type="text/javascript" src="./js/jquery.bxslider.min.js" ></script>
+		<script type="text/javascript" src="./js/jquery.li-scroller.1.0.js" ></script>
 		<script type="text/javascript">
 		<!--自動スライドタイプ-->
 		<!--
@@ -25,12 +28,19 @@
 			 wn = window.open(url, 'win','width=520,height=500,status=no,location=no,scrollbars=yes,directories=no,menubar=no,resizable=no,toolbar=no');wn.focus();
 			}
 		-->
+		<!--
+			$(function() {
+				$("#news_list").liScroll();
+			});
+			-->
 		</script>
 	</head>
 
 	<body>
 
 		<div id="wrap">
+
+
 
 			<!-- ヘッダー部分 -->
 			<div id="header">
@@ -51,16 +61,17 @@
 
 			<!-- 画像部分-->
 		<div id="slider1">
-			<div><a href="lease_yutaka.php"><img src="./img/top_yutaka.jpg" alt="*"></a></div>
-			<div><a href="lease_hanakawa.php"><img src="./img/top_hanakawa.jpg" alt="*"></a></div>
-			<div><a href="lease_my2.php"><img src="./img/top_my2.jpg" alt="*"></a></div>
+			<div><a href="./lease_yutaka.php"><img src="./img/top_yutaka.jpg" alt="*"></a></div>
+			<div><a href="./lease_hanakawa.php"><img src="./img/top_hanakawa.jpg" alt="*"></a></div>
+			<div><a href="./lease_my2.php"><img src="./img/top_my2.jpg" alt="*"></a></div>
 		</div>
 
 
 
 			<!--新着情報部分-->
 			<div id="news_wrap">
-<ul id="news_list">
+				<p><img src="./img/top_news.png" alt="news"></p>
+					<ul id="news_list">
 <?php 
 //設定ファイルインクルード
 include_once("news/config.php");
@@ -104,9 +115,9 @@ $count++;
 	}
 }	
 ?>
-</ul>
+					</ul>
 <?php if($copyright) echo $copyright ?>
-			</div>
+				</div>
 
 
 
@@ -124,7 +135,8 @@ $count++;
 			</div>
 
 
-		</div>
+
+</div>
 
 	</body>
 

@@ -1,3 +1,14 @@
 ﻿@charset "UTF-8";
 
 /* トップページのCSSです */
+
+div#news_wrap {
+	width: 850px;
+	margin: 100px auto 0;
+}
+
+div#news_wrap p {
+	width: 80px;
+	margin-top: 6px;
+	float: left;
+}
