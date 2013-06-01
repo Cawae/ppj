@@ -1,0 +1,1 @@
+<img src="./img/full.png" alt="空車なし">

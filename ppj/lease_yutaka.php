@@ -48,18 +48,7 @@
 						<h2><img src="./img/title_yutaka.png" alt="ロイヤルユタカ"></h2>
 						<p>
 							<?php
-								$img_vacant = '<img src="./img/vacant.png" alt="空室あり">';
-								$img_fully = '<img src="./img/fully.png" alt="空室なし">';
-								$savefile = "vacant_yutaka.txt";
-								if(isset($_POST['vacant'])) {
-									if($_POST['vacant'] == 0) {
-										file_put_contents($savefile, "$img_vacant");
-									}
-									else if($_POST['vacant'] == 1) {
-										file_put_contents($savefile, "$img_fully");
-									};
-								};
-								echo file_get_contents($savefile);
+								echo file_get_contents('yutaka.txt');
 							?>
 						</p>
 						<p><img src="./img/main_yutaka.jpg" alt="ロイヤルユタカの写真"></p>

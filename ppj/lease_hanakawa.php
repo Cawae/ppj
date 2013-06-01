@@ -48,18 +48,7 @@
 						<h2><img src="./img/title_hanakawa.png" alt="モータープール花川"></h2>
 						<p>
 							<?php
-								$img_empty = '<img src="./img/empty.png" alt="空車あり">';
-								$img_full = '<img src="./img/full.png" alt="空車なし">';
-								$savefile = "vacant_hanakawa.txt";
-								if(isset($_POST['vacant'])) {
-									if($_POST['vacant'] == 0) {
-										file_put_contents($savefile, "$img_empty");
-									}
-									else if($_POST['vacant'] == 1) {
-										file_put_contents($savefile, "$img_full");
-									};
-								};
-								echo file_get_contents($savefile);
+								echo file_get_contents('hanakawa.txt');
 							?>
 						</p>
 						<p><img src="./img/main_hanakawa.jpg" alt="ロイヤルユタカの写真"></p>

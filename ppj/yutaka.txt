@@ -1,0 +1,1 @@
+<img src="./img/fully.png" alt="空室なし">
