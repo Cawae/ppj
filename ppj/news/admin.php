@@ -13,84 +13,83 @@
 #  HP: http://www.php-factory.net/
 ##
 #######################################################################################
-session_start();
-header("Content-Type: text/html;charset=UTF-8");
+	session_start();
+	header("Content-Type: text/html;charset=UTF-8");
 
-#設定ファイルインクルード
-include_once("config.php");
+	#設定ファイルインクルード
+	include_once("config.php");
 
-if(isset($_GET['logout'])){
-$_SESSION = array();
-# セッションを破棄
-session_destroy();
-}
-$error = '';
-# セッション変数を初期化
-if (!isset($_SESSION['auth'])) {
-  $_SESSION['auth'] = FALSE;
-}
-if (isset($_POST['userid']) && isset($_POST['password'])){
-  foreach ($userid as $key => $value) {
-    if ($_POST['userid'] === $userid[$key] &&
-        $_POST['password'] === $password[$key]) {
-      $oldSid = session_id();
-      session_regenerate_id(TRUE);
-      if (version_compare(PHP_VERSION, '5.1.0', '<')) {
-        $path = session_save_path() != '' ? session_save_path() : '/tmp';
-        $oldSessionFile = $path . '/sess_' . $oldSid;
-        if (file_exists($oldSessionFile)) {
-          unlink($oldSessionFile);
-        }
-      }
-      $_SESSION['auth'] = TRUE;
-      if(isset($_SESSION['username'])) {
-        $_SESSION['username'] = $username[$key];
-      };
-      break;
-    }
-  }
-  if ($_SESSION['auth'] === FALSE) {
-    $error = '<center><font color="red">ユーザーIDかパスワードに誤りがあります。</font></center>';
-  }
-}
-if ($_SESSION['auth'] !== TRUE) {
+	if(isset($_GET['logout'])){
+		$_SESSION = array();
+		# セッションを破棄
+		session_destroy();
+	}
+	$error = '';
+	# セッション変数を初期化
+	if (!isset($_SESSION['auth'])) {
+		$_SESSION['auth'] = FALSE;
+	}
+	if (isset($_POST['userid']) && isset($_POST['password'])){
+		foreach ($userid as $key => $value) {
+			if ($_POST['userid'] === $userid[$key] && $_POST['password'] === $password[$key]) {
+				$oldSid = session_id();
+				session_regenerate_id(TRUE);
+				if (version_compare(PHP_VERSION, '5.1.0', '<')) {
+					$path = session_save_path() != '' ? session_save_path() : '/tmp';
+					$oldSessionFile = $path . '/sess_' . $oldSid;
+					if (file_exists($oldSessionFile)) {
+						unlink($oldSessionFile);
+					}
+				}
+				$_SESSION['auth'] = TRUE;
+				if(isset($_SESSION['username'])) {
+					$_SESSION['username'] = $username[$key];
+				};
+				break;
+			}
+		}
+		if ($_SESSION['auth'] === FALSE) {
+			$error = '<center><font color="red">ユーザーIDかパスワードに誤りがあります。</font></center>';
+		}
+	}
+	if ($_SESSION['auth'] !== TRUE) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
-<head>
-<meta name="robots" content="noindex,nofollow" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>新着情報、お知らせ管理画面</title>
-</head>
+	<head>
+		<meta name="robots" content="noindex,nofollow" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>新着情報、お知らせ管理画面</title>
+	</head>
 <style type="text/css">
 #login_form{
 	width:500px;	
 	margin:25px auto;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0px 7px #aaa;
-    font-weight: normal;
-    padding: 16px 16px 20px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0px 7px #aaa;
+	font-weight: normal;
+	padding: 16px 16px 20px;
 	color:#666;
 	line-height:1.3;
 	font-size:90%;
 }
 form .input {
-    font-size: 20px;
-    margin:2px 6px 10px 0;
-    padding: 3px;
-    width: 97%;
+	font-size: 20px;
+	margin:2px 6px 10px 0;
+	padding: 3px;
+	width: 97%;
 }
 input[type="text"], input[type="password"], input[type="file"], input[type="button"], input[type="submit"], input[type="reset"] {
-    background-color: #FFFFFF;
-    border: 1px solid #999;
+	background-color: #FFFFFF;
+	border: 1px solid #999;
 }
 .button-primary {
-    border: 1px solid #000;
-    border-radius: 11px;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 3px 10px;
+	border: 1px solid #000;
+	border-radius: 11px;
+	cursor: pointer;
+	font-size: 18px;
+	padding: 3px 10px;
 	width:450px;
 	height:38px;
 }
@@ -98,10 +97,10 @@ input[type="text"], input[type="password"], input[type="file"], input[type="butt
 </style>
 <body>
 <?php echo $error;?>
- <div id="login_form">
+	<div id="login_form">
 
- <p class="Tac">管理画面に入場するにはログインする必要があります。<br />
-    ID、パスワードはadmin.php内上部に記載されています。<br />管理者以外の入場は固くお断りします。</p>
+	<p class="Tac">管理画面に入場するにはログインする必要があります。<br />
+	ID、パスワードはadmin.php内上部に記載されています。<br />管理者以外の入場は固くお断りします。</p>
 <form action="admin.php" method="post">
 <label for="userid">ユーザーID</label>
 <input class="input" type="text" name="userid" id="userid" value="" style="ime-mode:disabled" />
@@ -130,92 +129,96 @@ if (!is_writable($file_path)){
 	}
 //書き込み・編集処理
 if (isset($_POST['submit']) or isset($_POST['edit_submit'])){
-  if(empty($_POST['title'])){
+	if(empty($_POST['title'])){
 		$messe= "タイトルが空です";
-  }else{
-  $up_ymd=$_POST['year'].'/'.$_POST['month'].'/'.$_POST['day'];
-  if(isset($_POST['comment'])){
-  $comment = str_replace("\n","<br />",$_POST['comment']);
-  $comment = str_replace("\r","","$comment");
-  $comment = str_replace(",","","$comment");
-  }
-  $title=str_replace(",","",$_POST['title']);
-  $lines = file("$file_path");
-  //$id = uniqid();
-  $id = date("YmdHis");//各記事にユニークなIDを付与　現在は年月日時分秒
-  if (isset($_POST['edit_submit'])){$id=$_POST['id'];}
-  $fp = @fopen("$file_path", "w") or die("fopen Error!!DESUYO--!!!");
-  $news_data = $id  . "," .$up_ymd. "," .$title  ."," .$comment  . "\n";
-    // 俳他的ロック
-    if (flock($fp, LOCK_EX)) {
-        // 書き込み
-        if (isset($_POST['submit'])){
-		fwrite($fp, $news_data);
-		$max_line --;
-		$messe= "【".$title."】を登録しました";
+	}else{
+		$up_ymd=$_POST['year'].'/'.$_POST['month'].'/'.$_POST['day'];
+		if(isset($_POST['comment'])){
+		$comment = str_replace("\n","<br />",$_POST['comment']);
+		$comment = str_replace("\r","","$comment");
+		$comment = str_replace(",","","$comment");
+	}
+	$title=str_replace(",","",$_POST['title']);
+	$lines = file("$file_path");
+	//$id = uniqid();
+	$id = date("YmdHis");//各記事にユニークなIDを付与　現在は年月日時分秒
+	if (isset($_POST['edit_submit'])){$id=$_POST['id'];}
+	$fp = @fopen("$file_path", "w") or die("fopen Error!!DESUYO--!!!");
+	$news_data = $id  . "," .$up_ymd. "," .$title  ."," .$comment  . "\n";
+	// 俳他的ロック
+	if (flock($fp, LOCK_EX)) {
+		// 書き込み
+		if (isset($_POST['submit'])){
+			fwrite($fp, $news_data);
+			$max_line --;
+			$messe= "【".$title."】を登録しました";
 		}
-        if ($max_line!='' and count($lines) > $max_line) {
-            $max_i = $max_line;
-        } else {
-            $max_i = count($lines);
-        }
-        for ($i = 0; $i < $max_i; $i++) {
-        if (isset($_POST['edit_submit'])){
-			$lines_array[$i] = explode(",",$lines[$i]);
-			if($lines_array[$i][0] != $id){
-				 fwrite($fp, $lines[$i]);
-			}else{
-				fwrite($fp, $news_data);
-				$messe= "編集処理完了しました！ ";
+		if ($max_line!='' and count($lines) > $max_line) {
+			$max_i = $max_line;
+		}
+		else {
+			$max_i = count($lines);
+		}
+		for ($i = 0; $i < $max_i; $i++) {
+			if (isset($_POST['edit_submit'])){
+				$lines_array[$i] = explode(",",$lines[$i]);
+				if($lines_array[$i][0] != $id){
+					fwrite($fp, $lines[$i]);
+				}
+				else {
+					fwrite($fp, $news_data);
+					$messe= "編集処理完了しました！ ";
+				}
 			}
-		}else{			
-            fwrite($fp, $lines[$i]);
+			else {
+				fwrite($fp, $lines[$i]);
+			}
 		}
-    }
-  }@fclose($fp);
-  
-    if($backup_copy=='1' && !isset($_POST['edit_submit'])){
+	}@fclose($fp);
+
+	if($backup_copy=='1' && !isset($_POST['edit_submit'])){
 		$backup_file_name = 'data/'.'Backup_'.date('YmdHis') .'.dat';
-		if(!@copy($file_path,$backup_file_name)){
-			$messe= "バックアップコピー失敗！<strong>data</strong>ディレクトリを書き込み可能なパーミッション（パーミッション707 or 777等）に変更し、ページを更新して再度投稿してみてください。config.phpにてバックアップを無効にすることもできます。<a href=\"admin.php\">[ページを更新する⇒]</a>";
-		}else{
-			@chmod($backup_file_name, 0666);
-			
+			if(!@copy($file_path,$backup_file_name)){
+				$messe= "バックアップコピー失敗！<strong>data</strong>ディレクトリを書き込み可能なパーミッション（パーミッション707 or 777等）に変更し、ページを更新して再度投稿してみてください。config.phpにてバックアップを無効にすることもできます。<a href=\"admin.php\">[ページを更新する⇒]</a>";
+			}
+			else {
+				@chmod($backup_file_name, 0666);
+			}
 		}
 	}
-  }
 }
 //再表示処理 非表示処理
-     $mode=htmlspecialchars(@$_GET['mode']);
-	if($mode=='disp' or $mode=='no_disp'){
-	 $id=$_GET['id'];
+$mode=htmlspecialchars(@$_GET['mode']);
+if($mode=='disp' or $mode=='no_disp'){
+	$id=$_GET['id'];
 	$lines = file("$file_path");
 	$fp = @fopen("$file_path", "w") or die("Error!!n");
-    if (flock($fp, LOCK_EX)) {
-        if ($max_line!='' and count($lines) > $max_line) {
-            $max_i = $max_line;
-        } else {
-            $max_i = count($lines);
-        }
-        for ($i = 0; $i < $max_i; $i++) {
-			
-			$lines_array[$i] = explode(",",$lines[$i]);
-			
-			if($lines_array[$i][0]!= $id){
-				 fwrite($fp, $lines[$i]);
-			}else{
-				if($mode=='disp'){//表示処理
-				$lines[$i] = str_replace("no_disp","","$lines[$i]");
-				$messe= "表示処理完了しました！ ";
-				}else if($mode=='no_disp'){//非表示処理
-				$messe= "非表示処理完了しました！ ";
-				$lines[$i] ="no_disp".$lines[$i];
-				}
-			 fwrite($fp, $lines[$i]);
+		if (flock($fp, LOCK_EX)) {
+			if ($max_line!='' and count($lines) > $max_line) {
+				$max_i = $max_line;
 			}
-        }
-    }
-  @fclose($fp);
+			else {
+				$max_i = count($lines);
+			}
+			for ($i = 0; $i < $max_i; $i++) {
+				$lines_array[$i] = explode(",",$lines[$i]);
+				if($lines_array[$i][0]!= $id){
+				fwrite($fp, $lines[$i]);
+			}
+			else {
+				if($mode=='disp'){//表示処理
+					$lines[$i] = str_replace("no_disp","","$lines[$i]");
+					$messe= "表示処理完了しました！ ";
+				}
+				else if($mode=='no_disp'){//非表示処理
+					$messe= "非表示処理完了しました！ ";
+					$lines[$i] ="no_disp".$lines[$i];
+				}
+				fwrite($fp, $lines[$i]);
+			}
+		}
+	}
+	@fclose($fp);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -229,39 +232,40 @@ if (isset($_POST['submit']) or isset($_POST['edit_submit'])){
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript">
 function yes_no(){
-    res = confirm("この記事を削除します！本当にいいですか？！OKなら「OK」を押して「変更」ボタンを押してください");
-    if(res == true){
-<?php
-	if(isset($_POST['del'])){
-	$id=$_POST['id'];
-	$lines = file("$file_path");
-	$fp = @fopen("$file_path", "w") or die("Error!!n");
-    if (flock($fp, LOCK_EX)) {
-        if ($max_line!='' and count($lines) > $max_line) {
-            $max_i = $max_line;
-        } else {
-            $max_i = count($lines);
-        }
-        for ($i = 0; $i < $max_i; $i++) {
-			
-			$lines_array[$i] = explode(",",$lines[$i]);
-			
-			if($lines_array[$i][0] != $id){
-				 fwrite($fp, $lines[$i]);
-			}else{
-				$lines[$i] = '';
-				fwrite($fp, $lines[$i]);
+	res = confirm("この記事を削除します！本当にいいですか？！OKなら「OK」を押して「変更」ボタンを押してください");
+if(res == true){
+	<?php
+		if(isset($_POST['del'])){
+		$id=$_POST['id'];
+		$lines = file("$file_path");
+		$fp = @fopen("$file_path", "w") or die("Error!!n");
+			if (flock($fp, LOCK_EX)) {
+				if ($max_line!='' and count($lines) > $max_line) {
+					$max_i = $max_line;
+				}
+				else {
+					$max_i = count($lines);
+				}
+				for ($i = 0; $i < $max_i; $i++) {
+					$lines_array[$i] = explode(",",$lines[$i]);
+				if($lines_array[$i][0] != $id){
+					fwrite($fp, $lines[$i]);
+				}
+				else {
+					$lines[$i] = '';
+					fwrite($fp, $lines[$i]);
+				}
 			}
-        }
-    }
-  @fclose($fp);
-  $messe= "指定行削除完了しました！ ";
-}
-?>
-   } else{
-        alert("キャンセルしました（汗");
-		return false;
+		}
+		@fclose($fp);
+		$messe= "指定行削除完了しました！ ";
 	}
+	?>
+}
+else{
+	alert("キャンセルしました（汗");
+	return false;
+}
 }
 
 function check(){
@@ -276,16 +280,16 @@ function check(){
 </script>
 <script type="text/javascript">
 function openwin(url) {
- wn = window.open(url, 'win','width=520,height=500,status=no,location=no,scrollbars=yes,directories=no,menubar=no,resizable=no,toolbar=no,left=50,top=50');wn.focus();
+	wn = window.open(url, 'win','width=520,height=500,status=no,location=no,scrollbars=yes,directories=no,menubar=no,resizable=no,toolbar=no,left=50,top=50');wn.focus();
 }
 </script>
 </head>
 <body id="news_admin">
 <div id="wrapper">
-  <p class="fc_red message_com"><?php if(isset($messe) && $messe_manage == '1')echo "$messe"; ?></p>
-  <div class="logout_btn"><a href="?logout=true">ログアウト</a></div>
-  <h1>新着情報 管理画面</h1>
-  <p>※並び順は日付順です。日付が同じ場合、新しいものは上になります。</p>
+	<p class="fc_red message_com"><?php if(isset($messe) && $messe_manage == '1')echo "$messe"; ?></p>
+	<div class="logout_btn"><a href="?logout=true">ログアウト</a></div>
+		<h1>新着情報 管理画面</h1>
+		<p>※並び順は日付順です。日付が同じ場合、新しいものは上になります。</p>
 <?php 
 $lines = file("$file_path");
 $lines = newsListSort($lines);
@@ -298,52 +302,54 @@ EOF;
 <div id="news_wrap">
 <ul id="news_list">
 <?php 
-	 $max_i = count($lines);
-	 for ($i = 0; $i < $max_i; $i++){
-	 $lines_array[$i] = explode(",",$lines[$i]);
-	 $id=$lines_array[$i][0];
-	 $lines_array[$i][3]=str_replace("\n","",$lines_array[$i][3]);
-	 $lines_array[$i][2] = htmlspecialchars($lines_array[$i][2]);
-		if(empty($lines_array[$i][3])){
+	$max_i = count($lines);
+	for ($i = 0; $i < $max_i; $i++){
+	$lines_array[$i] = explode(",",$lines[$i]);
+	$id=$lines_array[$i][0];
+	$lines_array[$i][3]=str_replace("\n","",$lines_array[$i][3]);
+	$lines_array[$i][2] = htmlspecialchars($lines_array[$i][2]);
+	if(empty($lines_array[$i][3])){
 		$title=	$lines_array[$i][2];
 		//詳細にURLだけを記述した場合はそのURLに直接リンクする
-		}else if ($page_link == 1 && @preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $lines_array[$i][3]) ) {
-		$title=	"<a href=\"{$lines_array[$i][3]}\" target=\"_parent\">".$lines_array[$i][2]."</a>";
 		}
-		else{
-		$title="<a href=\"javascript:openwin('popup.php?id={$id}')\">".$lines_array[$i][2]."</a>";
+		else if ($page_link == 1 && @preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $lines_array[$i][3]) ) {
+			$title=	"<a href=\"{$lines_array[$i][3]}\" target=\"_parent\">".$lines_array[$i][2]."</a>";
+			}
+		else {
+			$title="<a href=\"javascript:openwin('popup.php?id={$id}')\">".$lines_array[$i][2]."</a>";
 		}
-	if($lines[$i]==strpos($lines[$i], 'no_disp')){
-	echo"<li class=\"fc_bbb\"><span style=\"color:red;\">非表示中</span> {$lines_array[$i][1]} {$title}  ｜<a href=\"?mode=disp&id={$id}\">[表示する]</a> ｜<a href=\"?mode=edit&id={$id}\">[編集・削除]</a></li>\n";
-	 }else{
-	echo"<li>{$lines_array[$i][1]}  {$title}  ｜<a href=\"?mode=no_disp&id={$id}\">[非表示にする]</a>｜<a href=\"?mode=edit&id={$id}\">[編集・削除]</a></li>\n";
-	 }
-} 
+		if($lines[$i]==strpos($lines[$i], 'no_disp')){
+			echo"<li class=\"fc_bbb\"><span style=\"color:red;\">非表示中</span> {$lines_array[$i][1]} {$title}  ｜<a href=\"?mode=disp&id={$id}\">[表示する]</a> ｜<a href=\"?mode=edit&id={$id}\">[編集・削除]</a></li>\n";
+		}
+		else {
+			echo"<li>{$lines_array[$i][1]}  {$title}  ｜<a href=\"?mode=no_disp&id={$id}\">[非表示にする]</a>｜<a href=\"?mode=edit&id={$id}\">[編集・削除]</a></li>\n";
+		}
+	}
 ?>
 </ul>
 </div>
 <br />
-  <h2>記事登録・編集フォーム</h2>
+<h2>記事登録・編集フォーム</h2>
 
 <form method="post" action="admin.php" enctype="multipart/form-data" style="margin:0;" name="news_form" onsubmit="return check()">
 <?php
-   $mode=htmlspecialchars(@$_GET['mode']);
-if($mode=='edit'){
-	$id=$_GET['id'];
-    $lines = file("$file_path");
-        if ($max_line!='' and count($lines) > $max_line) {
-            $max_i = $max_line;
-        } else {
-            $max_i = count($lines);
-        }
- for ($i = 0; $i < $max_i; $i++){
-	 $lines_array[$i] = explode(",",$lines[$i]);
-	 if($lines_array[$i][0]==$id){
-		$lines_array[$i][3] = str_replace("<br />","\n","{$lines_array[$i][3]}");
-		$lines_array[$i][3] = rtrim("{$lines_array[$i][3]}","\n");
-		
-	   // $lines_array[$i][3] = str_replace("\r","","{$lines_array[$i][3]}");
-	echo"<p style=\"color:red;font-size:18px;\">下記内容を編集後「変更」ボタンを押してください。<a href=\"admin.php\">編集をキャンセル⇒</a></p>";
+	$mode=htmlspecialchars(@$_GET['mode']);
+	if($mode=='edit'){
+		$id=$_GET['id'];
+		$lines = file("$file_path");
+		if ($max_line!='' and count($lines) > $max_line) {
+			$max_i = $max_line;
+		}
+		else {
+			$max_i = count($lines);
+		}
+		for ($i = 0; $i < $max_i; $i++){
+			$lines_array[$i] = explode(",",$lines[$i]);
+			if($lines_array[$i][0]==$id){
+				$lines_array[$i][3] = str_replace("<br />","\n","{$lines_array[$i][3]}");
+				$lines_array[$i][3] = rtrim("{$lines_array[$i][3]}","\n");
+				// $lines_array[$i][3] = str_replace("\r","","{$lines_array[$i][3]}");
+				echo"<p style=\"color:red;font-size:18px;\">下記内容を編集後「変更」ボタンを押してください。<a href=\"admin.php\">編集をキャンセル⇒</a></p>";
 ?>
 <p>■タイトル<br />
 <?php
@@ -351,8 +357,8 @@ if($mode=='edit'){
 	echo"<input type=\"hidden\" name=\"id\" value=\"{$id}\" />";
 	
 	$up_ymd_array[$i] = explode("/",$lines_array[$i][1]);
-	 
-echo <<<EOM
+
+	echo <<<EOM
 <p>■日付：<input type="text" name="year" size="5" maxlength="4" value="{$up_ymd_array[$i][0]}" /> 年 <input type="text" name="month" size="3" maxlength="2" value="{$up_ymd_array[$i][1]}" /> 月 <input type="text" name="day" size="3" maxlength="2" value="{$up_ymd_array[$i][2]}" /> 日　※並び順にも使用します</p>
 EOM;
 	//echo"<input type=\"hidden\" name=\"up_ymd\" value=\"{$lines_array[$i][1]}\" />";	
@@ -386,30 +392,92 @@ break;	 }
 </form>
 <br />
 <br />
-<!-- 以下必要なければ削除可能です-->
-<h2 style="font-size:14px;">更新履歴（不具合情報やバージョンアップ情報などがあればこちらに表示されます）</h2>
-<iframe src="http://www.kens-web.com/php/news/" width="98%" height="100" title="news" frameborder="0" scrolling="auto"></iframe>
-<?php if($copyright) echo $copyright ?>
+<h1>空室情報 管理画面</h1>
+	<form name="a" action="./admin.php" method="post">
+		<h2>ロイヤルユタカ</h2>
+		<p><input name="vacant01" type="radio" value="0">空室あり　　　<input name="vacant01" type="radio" value="1">空室なし</p>
+		<p><input type="submit">
+		<?php
+			$img_vacant = '<img src="./img/vacant.png" alt="空室あり">';
+			$img_fully = '<img src="./img/fully.png" alt="空室なし">';
+			$savefile = "data/yutaka.dat";
+			if(!file_exists($savefile)) {
+				touch($savefile);
+			}
+			else {
+				if(isset($_POST['vacant01'])) {
+					if($_POST['vacant01'] == 0) {
+						file_put_contents($savefile, "$img_vacant");
+					}
+					else if($_POST['vacant01'] == 1) {
+						file_put_contents($savefile, "$img_fully");
+					};
+				};
+				if(file_get_contents($savefile) == $img_vacant) {
+					echo '空室あり';
+				}
+				else if(file_get_contents($savefile) == $img_fully) {
+					echo '空室なし';
+				}
+			}
+		?>
+	</form>
 
+	<form action="./admin.php" method="post">
+		<h2>MY2レジデンス</h2>
+		<p><input name="vacant02" type="radio" value="0">空室あり　　　<input name="vacant02" type="radio" value="1">空室なし</p>
+		<p><input type="submit">
+		<?php
+			$img_vacant = '<img src="./img/vacant.png" alt="空室あり">';
+			$img_fully = '<img src="./img/fully.png" alt="空室なし">';
+			$savefile = "data/my2.dat";
+			if(!file_exists($savefile)) {
+				touch($savefile);
+			}
+			if(isset($_POST['vacant02'])) {
+				if($_POST['vacant02'] == 0) {
+					file_put_contents($savefile, "$img_vacant");
+				}
+				else if($_POST['vacant02'] == 1) {
+					file_put_contents($savefile, "$img_fully");
+				};
+			};
+			if(file_get_contents($savefile) == $img_vacant) {
+				echo '空室あり';
+			}
+			else if(file_get_contents($savefile) == $img_fully) {
+				echo '空室なし';
+			}
+		?>
+	</form>
 
-<?php
-if (isset($_POST['submit']) && $backup_copy == 1){
-//ディレクトリ・ハンドルをオープン
-$res_dir = @opendir( 'data' );
-$main_file = 'news.dat';
-//ディレクトリ内のファイル名を取得
-while( $file_name = @readdir( $res_dir ) ){
-	//取得したファイル名を表示
-	$file_name2 = str_replace(array('Backup_','.dat'),'',$file_name);
-	//指定日以前のファイルを削除
-	if($file_name2 < date("YmdHis",strtotime("-{$del_month} month")) && $file_name != $main_file){
-			@unlink("data/{$file_name}");
-	}
-	//print "{$file_name}<br>\n";
-}
-closedir( $res_dir );
-}
-?>
+	<form action="./admin.php" method="post">
+		<h2>モータープール花川</h2>
+		<p><input name="vacant03" type="radio" value="0">空車あり　　　<input name="vacant03" type="radio" value="1">空車なし</p>
+		<p><input type="submit">
+		<?php
+			$img_empty = '<img src="./img/empty.png" alt="空車あり">';
+			$img_full = '<img src="./img/full.png" alt="空車なし">';
+			$savefile = "data/hanakawa.dat";
+			if(!file_exists($savefile)) {
+				touch($savefile);
+			}
+			if(isset($_POST['vacant03'])) {
+				if($_POST['vacant03'] == 0) {
+					file_put_contents($savefile, "$img_empty");
+				}
+				else if($_POST['vacant03'] == 1) {
+					file_put_contents($savefile, "$img_full");
+				};
+			};
+			if(file_get_contents($savefile) == $img_empty) {
+				echo '空車あり';
+			}
+			else if(file_get_contents($savefile) == $img_full) {
+				echo '空車なし';
+			}
+		?>
+	</form>
 </div>
 </body>
 </html>

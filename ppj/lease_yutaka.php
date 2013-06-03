@@ -48,7 +48,7 @@
 						<h2><img src="./img/title_yutaka.png" alt="ロイヤルユタカ"></h2>
 						<p>
 							<?php
-								echo file_get_contents('yutaka.txt');
+								echo file_get_contents('./news/data/yutaka.dat');
 							?>
 						</p>
 						<p><img src="./img/main_yutaka.jpg" alt="ロイヤルユタカの写真"></p>

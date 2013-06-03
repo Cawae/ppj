@@ -48,7 +48,7 @@
 						<h2><img src="./img/title_hanakawa.png" alt="モータープール花川"></h2>
 						<p>
 							<?php
-								echo file_get_contents('hanakawa.txt');
+								echo file_get_contents('./news/data/hanakawa.dat');
 							?>
 						</p>
 						<p><img src="./img/main_hanakawa.jpg" alt="ロイヤルユタカの写真"></p>

@@ -47,7 +47,7 @@
 						<h2><img src="./img/title_my2.png" alt="ロイヤルユタカ"></h2>
 						<p>
 							<?php
-								echo file_get_contents('my2.txt');
+								echo file_get_contents('./news/data/my2.dat');
 							?>
 						</p>
 						<p><img src="./img/main_my2.jpg" alt="ロイヤルユタカの写真"></p>
